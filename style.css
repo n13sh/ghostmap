@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+:root {
+  --bg: #000000;
+  --text: #00ff00;
+  --text-dim: #008800;
+  --mono: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  overflow-x: hidden;
+}
+
+/* CRT Scanlines */
+.crt-overlay {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 100;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Logo Animation */
+.logo {
+  width: 150px;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.8));
+  animation: float 4s ease-in-out infinite;
+  margin-bottom: 30px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ASCII Header */
+pre.ascii-art {
+  font-size: 10px;
+  line-height: 10px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+  overflow-x: hidden;
+}
+
+@media (min-width: 600px) {
+  pre.ascii-art {
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+
+/* Terminal Terminal Output */
+.terminal-window {
+  width: 100%;
+  background: rgba(0, 20, 0, 0.8);
+  border: 1px solid var(--text-dim);
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+  margin-bottom: 40px;
+  box-sizing: border-box;
+}
+
+.terminal-header {
+  border-bottom: 1px dashed var(--text-dim);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.terminal-content {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Download Button */
+.download-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid var(--text);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3), inset 0 0 10px rgba(0, 255, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.download-btn:hover {
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6), inset 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+.meta-info {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-top: 10px;
+}
